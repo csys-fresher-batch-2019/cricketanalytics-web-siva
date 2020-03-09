@@ -7,9 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.csys.MatchDataDaoImp;
-import com.csys.PlayerCareerDaoImp;
-import com.csys.PlayerProfileDaoImplementation;
+import com.csys.dao.imp.MatchDataDaoImp;
+import com.csys.dao.imp.PlayerCareerDaoImp;
+import com.csys.dao.imp.PlayerProfileDaoImplementation;
+
+
 
 /**
  * Servlet implementation class Addmatchdetailservlet
@@ -29,8 +31,7 @@ public class Addmatchdetailservlet extends HttpServlet {
 		PlayerProfileDaoImplementation object = new PlayerProfileDaoImplementation();
 		MatchDataDaoImp obj1 = new MatchDataDaoImp();
 		try {
-			boolean res = obj.validateplayercareer(capno, format);
-			if(res) {
+			
 				boolean reset = object.validateretiredplayer(capno);
 				if(reset) {
 					String result = "Entered cap number is a retired player one";
@@ -39,12 +40,9 @@ public class Addmatchdetailservlet extends HttpServlet {
 				obj1.addMatchDetail(capno, format, run);
 				String result = "Successfully added to database";
 				response.sendRedirect("addmatchdetail.jsp?res1="+result);	
-				}}else {
-				String result = "Enter a valid cap number";
-				response.sendRedirect("addmatchdetail.jsp?res="+result);
-			}
-		} catch (Exception e) {
+				}
 			
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

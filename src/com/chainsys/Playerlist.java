@@ -11,9 +11,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import com.csys.PlayerProfile;
-import com.csys.PlayerProfileDao;
-import com.csys.PlayerProfileDaoImplementation;
+
+import com.csys.dao.PlayerProfileDao;
+import com.csys.dao.imp.PlayerProfileDaoImplementation;
+import com.csys.model.PlayerProfile;
+
 
 /**
  * Servlet implementation class Playerlist

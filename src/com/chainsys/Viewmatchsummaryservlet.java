@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.csys.MatchData;
-import com.csys.MatchDataDaoImp;
+import com.csys.dao.imp.MatchDataDaoImp;
+import com.csys.model.MatchData;
+
+
 
 /**
  * Servlet implementation class Viewmatchsummaryservlet

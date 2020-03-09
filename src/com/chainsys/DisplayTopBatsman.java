@@ -12,9 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.csys.PlayerCareer;
-import com.csys.PlayerCareerDao;
-import com.csys.PlayerCareerDaoImp;
+import com.csys.dao.PlayerCareerDao;
+import com.csys.dao.imp.PlayerCareerDaoImp;
+import com.csys.model.PlayerCareer;
+
+
 
 /**
  * Servlet implementation class DisplayTopBatsman
@@ -26,7 +28,7 @@ public class DisplayTopBatsman extends HttpServlet {
 		int n = 5;
 		String type = request.getParameter("format");
 		HttpSession session = request.getSession();
-		session.setAttribute("match type", type);
+		session.setAttribute("matchtype", type);
 		PlayerCareerDao dao = new PlayerCareerDaoImp ();
 		List <PlayerCareer> pc = new ArrayList <PlayerCareer>();
 		try {
@@ -39,6 +41,4 @@ public class DisplayTopBatsman extends HttpServlet {
 		}
 	}
 
-	
-
-}
+	}

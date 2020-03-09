@@ -1,15 +1,17 @@
 package com.chainsys;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.csys.DBexception;
-import com.csys.MatchDataDaoImp;
-import com.csys.PlayerCareerDaoImp;
+import com.csys.dao.imp.MatchDataDaoImp;
+import com.csys.exceptionmsg.DBexception;
+
+
 
 /**
  * Servlet implementation class Updatecareerservlet
@@ -24,8 +26,9 @@ public class Updatecareerservlet extends HttpServlet {
 		MatchDataDaoImp obj = new MatchDataDaoImp();
 		
 		try {
-			obj.updateCareer();
-			
+			obj.updateCareer();		
+			String result = "Update Career";
+			response.sendRedirect("viewmatchsummary.jsp?res1="+result);
 		} catch (DBexception e) {
 
 			e.printStackTrace();

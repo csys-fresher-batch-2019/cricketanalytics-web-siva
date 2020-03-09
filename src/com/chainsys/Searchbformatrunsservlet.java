@@ -11,9 +11,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.csys.PlayerCareerDao;
-import com.csys.PlayerCareerDaoImp;
-import com.csys.formatruns;
+import com.csys.dao.PlayerCareerDao;
+import com.csys.dao.imp.PlayerCareerDaoImp;
+import com.csys.model.formatruns;
+
+
 
 /**
  * Servlet implementation class Searchbformatrunsservlet

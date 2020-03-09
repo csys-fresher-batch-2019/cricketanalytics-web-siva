@@ -7,8 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.csys.DBexception;
-import com.csys.PlayerProfileDaoImplementation;
+import com.csys.dao.imp.PlayerProfileDaoImplementation;
+
+
 
 /**
  * Servlet implementation class Updateretiredyearservlet
@@ -29,7 +30,7 @@ public class Updateretiredyearservlet extends HttpServlet {
 			try {
 				res = object.validateplayerprofile(capno);
 				if(res) {
-					String result = "Enter a valid cap number ";
+					String result = "Enter a valid cap number";
 					response.sendRedirect("Updateretiredyear.jsp?res="+result);
 				}else {
 					object.updateRetiredYear(capno, year);

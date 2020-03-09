@@ -11,9 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.csys.PlayerCareer;
-import com.csys.PlayerCareerDao;
-import com.csys.PlayerCareerDaoImp;
+import com.csys.dao.PlayerCareerDao;
+import com.csys.dao.imp.PlayerCareerDaoImp;
+import com.csys.model.PlayerCareer;
+
 
 @WebServlet("/GetDetails")
 public class GetDetails extends HttpServlet {
@@ -22,27 +23,26 @@ public class GetDetails extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String a=request.getParameter("playerName");
-		System.out.println(a);
 		HttpSession session = request.getSession();
-		session.setAttribute("Player Name", a);
+		session.setAttribute("Name", a);
 		PlayerCareerDao dao = new PlayerCareerDaoImp ();
 	    ArrayList <PlayerCareer> pc = new ArrayList <PlayerCareer>();
+	    String errorMsg=null;
 		try {
 			pc = dao.getdetails(a);
-			if(pc!=null) {
+			System.out.println(pc.size());
+			if(pc.size()!=0){
 		    request.setAttribute("a", pc); 
 			RequestDispatcher d=request.getRequestDispatcher("display.jsp");
 			d.forward(request, response);
 			}
 			else {
-				String errorMsg = "Invalid Name";
-				request.setAttribute("Error", errorMsg);
-				RequestDispatcher rd = request.getRequestDispatcher("UserPage.jsp");
-				rd.forward(request, response);
+				errorMsg = "Player Not Found";
+			    response.sendRedirect("display.jsp?res="+errorMsg);
 			}
 			} catch (Exception e) {
+			e.printStackTrace();
 			
-			System.out.println("Invalid Name");
 		}
 		
 	}
